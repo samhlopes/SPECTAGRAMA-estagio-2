@@ -1,36 +1,38 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image, StyleSheet } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default class Feed extends Component {
     render() {
         return (
-<View style={styles.container}>
-    <SafeAreaView style={styles.droidSafeArea} />
-    <View style={styles.appTitle}>
-        <View style={styles.appIcon}>
-            <Image
-                source={require("../assets/logo.png")}
-                style={styles.iconImage}
-            ></Image>
-        </View>
-        <View styles={styles.appTitleTextContainer}>
-            <Text style={styles.appTitleText}>Espectagram</Text>
-        </View>
-    </View>
-    <View style={styles.appTitleTextContainer}>
-        <FlatList
-            keyExtractor={this.keyExtractor}
-            data={posts}
-            renderItem={this.renderItem}
-        />
-    </View>
-</View>
+            <View style={styles.container}>
+                <SafeAreaView style={styles.droidSafeArea} />
+                <View style={styles.appTitle}>
+                    <View style={styles.appIcon}>
+                        <Image
+                            source={require("../assets/logo.png")}
+                            style={styles.iconImage}
+                        ></Image>
+                    </View>
+                    <View styles={styles.appTitleTextContainer}>
+                        <Text style={styles.appTitleText}>Espectagram</Text>
+                    </View>
+                </View>
+                <View style={styles.cardContainer}>
+                    <FlatList
+                        keyExtractor={this.keyExtractor}
+                        data={posts}
+                        renderItem={this.renderItem}
+                    />
+                </View>
+            </View>
         )
     }
 }
 
-const styles = StylesSheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "black"
